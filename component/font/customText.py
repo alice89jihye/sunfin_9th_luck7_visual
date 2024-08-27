@@ -490,7 +490,7 @@ def marginleftNoLink(text, margin_left="20px", color=None, margin_bottom="8px", 
         unsafe_allow_html=True
     )
 
-def link(text, url, color="#0000FF", margin_bottom="8px", font_size="16px"):
+def link(text, url, color="#0000FF", margin_bottom="8px", font_size="16px", margin_left="0px"):
     st.markdown(
         f"""
         <style>
@@ -501,9 +501,29 @@ def link(text, url, color="#0000FF", margin_bottom="8px", font_size="16px"):
             font-size: {font_size};
             text-decoration: underline;
             margin-bottom: {margin_bottom};
+            margin-left: {margin_left};
         }}
         </style>
         <a href="{url}" class="custom-link">{text}</a>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def link2(text, url, color=None, margin_bottom="8px", font_size="16px", margin_left="0px"):
+    st.markdown(
+        f"""
+        <style>
+        .custom-link2 {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-size: {font_size};
+            text-decoration: underline;
+            margin-bottom: {margin_bottom};
+            margin-left: {margin_left};
+        }}
+        </style>
+        <a href="{url}" class="custom-link2">{text}</a>
         """, 
         unsafe_allow_html=True
     )
@@ -527,7 +547,7 @@ def italic(text, color=None, margin_bottom="8px", font_size="16px"):
         unsafe_allow_html=True
     )
 
-def italicNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
+def italicNoLink(text, color=None, margin_bottom="8px", font_size="16px", margin_left="0px"):
     color = color or text_color
     st.markdown(
         f"""
@@ -539,6 +559,7 @@ def italicNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
             font-style: italic;
             font-size: {font_size};
             margin-bottom: {margin_bottom};
+            margin-left: {margin_left};
             text-decoration: none;
         }}
         .custom-italic-no-link:hover {{

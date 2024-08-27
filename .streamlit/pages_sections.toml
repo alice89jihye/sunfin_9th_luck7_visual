@@ -17,3 +17,16 @@ is_section = true
 path = "pages/componentOfPersonalityPage.py"
 name = "Component of Personality"
 icon = ""
+
+[[pages]]
+path = "pages/goalsOfTheProjectPage.py"
+name = "Goals of the Project"
+icon = ""
+
+[[pages]]
+path = "pages/methodologyPage.py"
+name = "Methodology"
+icon = ""
+
+
+

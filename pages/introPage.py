@@ -35,7 +35,15 @@ def show():
     
     from pages.componentOfPersonalityPage import show_content as personality_content
     customText.title("Component of Personality")
-    scrollFadeIn.scroll_fade_in(personality_content())
+    scrollFadeIn.scroll_fade_in(personality_content(), "Component of Personality")
+
+    from pages.goalsOfTheProjectPage import show_content as project_content
+    customText.title("Goals of the Project")
+    scrollFadeIn.scroll_fade_in(project_content(), "Goals of the Project")
+
+    from pages.methodologyPage import show_content as methodology_content
+    customText.title("Methodology")
+    scrollFadeIn.scroll_fade_in(methodology_content(), "Methodology")
 
 
 show()
