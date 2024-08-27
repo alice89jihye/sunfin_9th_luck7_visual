@@ -16,17 +16,17 @@ def show_intro_content():
     customText.subheaderNoLink("Do Facial Expressions Matter with One’s Personality?")
     divider.space(40)
 
-    customText.boldHNoLink("Abraham Lincoln")
-    customText.regular4NoLink("나이 40이면 자신의 얼굴에 책임을 져야 한다.")
+    customText.boldNoLink("Abraham Lincoln")
+    customText.regularNoLink("나이 40이면 자신의 얼굴에 책임을 져야 한다.")
     divider.space(40)
 
-    customText.boldHNoLink("첫 인상")
-    customText.regular4NoLink("처음 만나는 사람의 속성에 대해서 그 사람에 대한 cue를 기반으로 판단을 내리는 것")
-    customText.regular4NoLink("첫 인상 결정요인 1위 '얼굴 표정' (YTN, 2012; 잡코리아 조사, 2022)")
-    customText.regular4NoLink("첫 인상 결정 뒤 잘 바뀌지 않는다 (헬스조선, 2024)")
+    customText.boldNoLink("첫 인상")
+    customText.regularNoLink("처음 만나는 사람의 속성에 대해서 그 사람에 대한 cue를 기반으로 판단을 내리는 것")
+    customText.regularNoLink("첫 인상 결정요인 1위 '얼굴 표정' (YTN, 2012; 잡코리아 조사, 2022)")
+    customText.regularNoLink("첫 인상 결정 뒤 잘 바뀌지 않는다 (헬스조선, 2024)")
     divider.space(40)
 
-    customText.boldHNoLinkRight("\"사람의 내적 속성이 얼굴이라는 표면에 드러난다.\"", None, 18)
+    customText.rightNoLink("\"사람의 내적 속성이 얼굴이라는 표면에 드러난다.\"", None, 18)
 
 
 def show():
@@ -34,6 +34,7 @@ def show():
     divider.divider("#d0d0d0")
     
     from pages.componentOfPersonalityPage import show_content as personality_content
+    customText.title("Component of Personality")
     scrollFadeIn.scroll_fade_in(personality_content())
 
 

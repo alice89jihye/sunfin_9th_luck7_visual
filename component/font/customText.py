@@ -15,7 +15,130 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 커스텀 텍스트 스타일 함수들
-def title(text, color=None, marginBottom="10px"):
+def h1(text, color=None, margin_bottom="20px", font_size="36px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h1 {{
+            font-family: {font};
+            color: {color};
+            font-weight: 700;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <h1 class="custom-h1">{text}</h1>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def h1NoLink(text, color=None, margin_bottom="20px", font_size="36px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h1-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 700;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-h1-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <h1 class="custom-h1-no-link">{text}</h1>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def h2(text, color=None, margin_bottom="16px", font_size="30px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h2 {{
+            font-family: {font};
+            color: {color};
+            font-weight: 600;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <h2 class="custom-h2">{text}</h2>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def h2NoLink(text, color=None, margin_bottom="16px", font_size="30px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h2-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 600;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-h2-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <h2 class="custom-h2-no-link">{text}</h2>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def h3(text, color=None, margin_bottom="14px", font_size="24px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h3 {{
+            font-family: {font};
+            color: {color};
+            font-weight: 500;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <h3 class="custom-h3">{text}</h3>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def h3NoLink(text, color=None, margin_bottom="14px", font_size="24px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-h3-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 500;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-h3-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <h3 class="custom-h3-no-link">{text}</h3>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def title(text, color=None, margin_bottom="10px", font_size="32px"):
     color = color or text_color
     st.markdown(
         f"""
@@ -24,8 +147,8 @@ def title(text, color=None, marginBottom="10px"):
             font-family: {font};
             color: {color};
             font-weight: 700;
-            font-size: 32px;
-            margin-bottom: {marginBottom};
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
         }}
         </style>
         <p class="custom-title">{text}</p>
@@ -33,7 +156,7 @@ def title(text, color=None, marginBottom="10px"):
         unsafe_allow_html=True
     )
 
-def titleNoLink(text, color=None, marginBottom="10px"):
+def titleNoLink(text, color=None, margin_bottom="10px", font_size="32px"):
     color = color or text_color
     st.markdown(
         f"""
@@ -42,9 +165,9 @@ def titleNoLink(text, color=None, marginBottom="10px"):
             font-family: {font};
             color: {color};
             font-weight: 700;
-            font-size: 32px;
-            margin-bottom: {marginBottom};
-            margin-top: {marginBottom}:
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            margin-top: {margin_bottom};
             text-decoration: none;
         }}
         .custom-title-no-link:hover {{
@@ -57,132 +180,317 @@ def titleNoLink(text, color=None, marginBottom="10px"):
         unsafe_allow_html=True
     )
 
-def header(text, color=None):
-    color = color or text_color
-    st.markdown(f'<h2 style="font-family: {font}; color: {color};">{text}</h2>', unsafe_allow_html=True)
-
-def subheaderNoLink(text, color=None):
+def header(text, color=None, margin_bottom="12px", font_size="28px"):
     color = color or text_color
     st.markdown(
         f"""
         <style>
-        .subheader-no-link {{
+        .custom-header {{
+            font-family: {font};
+            color: {color};
+            font-weight: 600;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <p class="custom-header">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def headerNoLink(text, color=None, margin_bottom="12px", font_size="28px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-header-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 600;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-header-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-header-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def subheader(text, color=None, margin_bottom="10px", font_size="22px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-subheader {{
             font-family: {font};
             color: {color};
             font-weight: 500;
-            font-size: 20px;
-            margin-bottom: 10px;
-            text-decoration: none;
-        }}
-        .subheader-no-link:hover {{
-            text-decoration: none;
-            cursor: default;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
         }}
         </style>
-        <p class="subheader-no-link">{text}</p>
-        """, unsafe_allow_html=True
+        <p class="custom-subheader">{text}</p>
+        """, 
+        unsafe_allow_html=True
     )
 
-def boldHNoLink(text, color=None, font_size="16px"):
+def subheaderNoLink(text, color=None, margin_bottom="10px", font_size="22px"):
     color = color or text_color
     st.markdown(
         f"""
         <style>
-        .bold-no-link {{
+        .custom-subheader-no-link {{
             font-family: {font};
             color: {color};
-            font-weight: 700;
+            font-weight: 500;
             font-size: {font_size};
-            margin-bottom: 10px;
+            margin-bottom: {margin_bottom};
             text-decoration: none;
         }}
-        .bold-no-link:hover {{
+        .custom-subheader-no-link:hover {{
             text-decoration: none;
             cursor: default;
         }}
         </style>
-        <p class="bold-no-link">{text}</p>
-        """, unsafe_allow_html=True
+        <p class="custom-subheader-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
     )
 
-def boldHwithSubtextNoLink(text, subtext, color=None, subtext_color=None, font_size="16px", subtext_size="14px"):
+def bold(text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
-    subtext_color = subtext_color or color
     st.markdown(
         f"""
         <style>
-        .bold-with-subtext {{
+        .custom-bold {{
             font-family: {font};
             color: {color};
             font-weight: 700;
             font-size: {font_size};
-            margin-bottom: 10px;
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <p class="custom-bold">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def boldNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-bold-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 700;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
             text-decoration: none;
         }}
-        .subtext {{
+        .custom-bold-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-bold-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def regular(text, color=None, margin_bottom="8px", font_size="16px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-regular {{
             font-family: {font};
-            color: {subtext_color};
+            color: {color};
             font-weight: 400;
-            font-size: {subtext_size};
-            margin-left: 10px;
-        }}
-        .bold-with-subtext:hover, .subtext:hover {{
-            text-decoration: none;
-            cursor: default;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
         }}
         </style>
-        <span class="bold-with-subtext">{text}<span class="subtext">{subtext}</span></span>
-        """, unsafe_allow_html=True
+        <p class="custom-regular">{text}</p>
+        """, 
+        unsafe_allow_html=True
     )
 
-def boldHNoLinkRight(text, color=None, font_size="16px"):
+def regularNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
     st.markdown(
         f"""
         <style>
-        .bold-no-link-right {{
+        .custom-regular-no-link {{
             font-family: {font};
             color: {color};
-            font-weight: 700;
+            font-weight: 400;
             font-size: {font_size};
-            margin-bottom: 10px;
+            margin-bottom: {margin_bottom};
             text-decoration: none;
+        }}
+        .custom-regular-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-regular-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def caption(text, color=None, margin_bottom="6px", font_size="14px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-caption {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <p class="custom-caption">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def captionNoLink(text, color=None, margin_bottom="6px", font_size="14px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-caption-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-size: {font_size};
+            font-style: italic;
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-caption-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-caption-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def code(text, background_color="#f0f0f0", margin_bottom="10px", font_size="14px"):
+    st.markdown(
+        f"""
+        <style>
+        .custom-code {{
+            font-family: monospace;
+            background-color: {background_color};
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <code class="custom-code">{text}</code>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def right(text, color=None, margin_bottom="8px", font_size="16px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-right {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-size: {font_size};
             text-align: right;
+            margin-bottom: {margin_bottom};
         }}
-        .bold-no-link-right:hover {{
+        </style>
+        <p class="custom-right">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def rightNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-right-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 700;
+            font-size: {font_size};
+            text-align: right;
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-right-no-link:hover {{
             text-decoration: none;
             cursor: default;
         }}
         </style>
-        <p class="bold-no-link-right">{text}</p>
-        """, unsafe_allow_html=True
+        <p class="custom-right-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
     )
 
-def regular4NoLink(text, color=None, font_size="16px", italic=False):
+def marginleft(text, margin_left="20px", color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
-    italic_style = "font-style: italic;" if italic else ""
     st.markdown(
         f"""
         <style>
-        .no-link {{
+        .custom-marginleft {{
             font-family: {font};
             color: {color};
             font-weight: 400;
             font-size: {font_size};
-            margin: 0;
-            text-decoration: none;
-            {italic_style}
-        }}
-        .no-link:hover {{
-            text-decoration: none;
-            cursor: default; 
+            margin-left: {margin_left};
+            margin-bottom: {margin_bottom};
         }}
         </style>
-        <p class="no-link">{text}</p>
-        """, unsafe_allow_html=True
+        <p class="custom-marginleft">{text}</p>
+        """, 
+        unsafe_allow_html=True
     )
 
-def regular4Link(text, url, color="#0000FF", font_size="16px", indent="0px"):
+def marginleftNoLink(text, margin_left="20px", color=None, margin_bottom="8px", font_size="16px"):
+    color = color or text_color
+    st.markdown(
+        f"""
+        <style>
+        .custom-marginleft-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-size: {font_size};
+            margin-left: {margin_left};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-marginleft-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-marginleft-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
+
+def link(text, url, color="#0000FF", margin_bottom="8px", font_size="16px"):
     st.markdown(
         f"""
         <style>
@@ -191,28 +499,84 @@ def regular4Link(text, url, color="#0000FF", font_size="16px", indent="0px"):
             color: {color};
             font-weight: 400;
             font-size: {font_size};
-            margin: 0;
-            text-decoration: none;
-            display: inline-block;
-            padding-left: {indent};
-        }}
-        .custom-link:hover {{
             text-decoration: underline;
-            cursor: pointer;
+            margin-bottom: {margin_bottom};
         }}
         </style>
-        <a href="{url}" target="_blank" class="custom-link">{text}</a>
-        """, unsafe_allow_html=True
+        <a href="{url}" class="custom-link">{text}</a>
+        """, 
+        unsafe_allow_html=True
     )
 
-def caption(text, color=None, marginBottom="10px"):
+def italic(text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
-    st.markdown(f'<p style="font-family: {font}; color: {color}; font-size: 12px; margin-bottom: {marginBottom}">{text}</p>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <style>
+        .custom-italic {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-style: italic;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+        }}
+        </style>
+        <p class="custom-italic">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
 
-def markdown(text, color=None):
+def italicNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
-    st.markdown(f'<p style="font-family: {font}; color: {color};">{text}</p>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <style>
+        .custom-italic-no-link {{
+            font-family: {font};
+            color: {color};
+            font-weight: 400;
+            font-style: italic;
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            text-decoration: none;
+        }}
+        .custom-italic-no-link:hover {{
+            text-decoration: none;
+            cursor: default;
+        }}
+        </style>
+        <p class="custom-italic-no-link">{text}</p>
+        """, 
+        unsafe_allow_html=True
+    )
 
-def code(text, color=None):
+def mixed_style_text(bold_text, regular_text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
-    st.markdown(f'<pre style="font-family: {font}; color: {color}; background-color: #f5f5f5; padding: 10px;">{text}</pre>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <style>
+        .mixed-style-text {{
+            font-family: {font};
+            color: {color};
+            font-size: {font_size};
+            margin-bottom: {margin_bottom};
+            white-space: nowrap;
+            display: inline-block;
+            text-decoration: none;
+        }}
+        .mixed-style-text-bold {{
+            font-weight: 700;
+            text-decoration: none;
+        }}
+        .mixed-style-text-regular {{
+            font-weight: 400;
+            text-decoration: none;
+        }}
+        </style>
+        <span class="mixed-style-text">
+            <span class="mixed-style-text-bold">{bold_text}</span><span class="mixed-style-text-regular">{regular_text}</span>
+        </span>
+        """, 
+        unsafe_allow_html=True
+    )
