@@ -1,6 +1,6 @@
 streamlit
 pandas
-st_pages
+st_pages==1.0.1
 scikit-learn
 plotly
 numpy
