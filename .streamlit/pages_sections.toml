@@ -1,0 +1,19 @@
+[[pages]]
+name = ""
+icon = "😷"
+is_section = true
+
+[[pages]]
+path = "pages/introPage.py"
+name = "Subject,"
+icon = ""
+
+[[pages]]
+name = "🙂"
+icon = ""
+is_section = true
+
+[[pages]]
+path = "pages/componentofPersonalityPage.py"
+name = "Component of Personality"
+icon = ""
