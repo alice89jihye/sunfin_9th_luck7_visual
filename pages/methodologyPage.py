@@ -13,7 +13,7 @@ def show_content():
         }
         </style>
     """, unsafe_allow_html=True)
-    
+
     ct.subheader("Data: ChaLearn First Impression V2 (CVPR’17)")
     st.image("./data/img/chaLearn.png", use_column_width=True)
     ct.link2("https://chalearnlap.cvc.uab.cat/dataset/24/description/","https://chalearnlap.cvc.uab.cat/dataset/24/description/")
@@ -62,11 +62,11 @@ def show_content():
     divider.space(80)
 
     ct.bold("Creating a Model")
-    ct.regularNoLink("Audio Subnetwork + Visual Subnetwork")
-    ct.regularNoLink("☞ Combined Network")
+    ct.regular("Audio Subnetwork + Visual Subnetwork")
+    ct.regular("☞ Combined Network")
     st.image("./data/img/model.png", use_column_width=True)
-    ct.regularNoLink("Early Stopping (monitor=’val_loss’, patience = 3), Epoch = 20")
-    ct.regularNoLink("Train input")
+    ct.regular("Early Stopping (monitor=’val_loss’, patience = 3), Epoch = 20")
+    ct.regular("Train input")
     html_content = """
     <style>
         .container {
@@ -107,7 +107,7 @@ def show_content():
 
     ct.subheader("3. Prediction")
     ct.bold("Preprocessing")
-    ct.regularNoLink("Resize the images (target size = 128 * 128)")
+    ct.regular("Resize the images (target size = 128 * 128)")
     """
     Augmentation
     (Original Image, Slight Rotation, Horizontal Flip, Slight Shift, Slight brightness adjustment, Gaussian blur)
@@ -165,8 +165,8 @@ def show_content():
     divider.space(60)
 
     ct.subheader("4. Visualization")
-    ct.regularNoLink("Distribution of Personality Traits per Job")
-    ct.regularNoLink("Dominant Personality Traits per Job")
+    ct.regular("Distribution of Personality Traits per Job")
+    ct.regular("Dominant Personality Traits per Job")
     
     html_content = """
     <style>

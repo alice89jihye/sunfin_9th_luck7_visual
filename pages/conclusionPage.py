@@ -15,10 +15,10 @@ def show_content():
     """, unsafe_allow_html=True)
 
     ct.subheader("Different Types of Self")
-    ct.regularNoLink("Who I really am vs. The one I want to be vs. The one I have to be")
+    ct.regular("Who I really am vs. The one I want to be vs. The one I have to be")
     divider.space(60)
-    ct.regularNoLink("What does the image data tell us about people?")
-    ct.regularNoLink("Social Personality")
+    ct.regular("What does the image data tell us about people?")
+    ct.regular("Social Personality")
     divider.space(60)
     ct.subheader("Further questions")
     st.markdown("""

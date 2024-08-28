@@ -13,63 +13,53 @@ def show_content():
         }
         </style>
     """, unsafe_allow_html=True)
-    
+
     ct.subheader("Big Five Personalit")
     divider.space(40)
 
     ct.bold("What is PERSONALITY?")
-    ct.regularNoLink("Allport, G. W. (1937). Personality: a psychological interpretation. Holt.")
+    ct.regular("Allport, G. W. (1937). Personality: a psychological interpretation. Holt.")
     ct.link("https://archive.org/details/in.ernet.dli.2015.155561/page/n45/mode/2up", "https://archive.org/details/in.ernet.dli.2015.155561/page/n45/mode/2up", "#0000FF", "8px", "16px", "40px")
     divider.space(40)
 
     ct.mixed_style_text("“Persona”","_ the theatrical mask first used in Greek drama")
-    ct.italicNoLink("peri sô ma (around the body)", None,"8px", "16px", "40px")
-    ct.italicNoLink("persum (head or face; the Etruscan and Old Latin).", None,"8px", "16px", "40px")
-    ct.italicNoLink("per se una (self-containing; the Latin).®", None,"8px", "16px", "40px")
+    ct.italic("peri sô ma (around the body)")
+    ct.italic("persum (head or face; the Etruscan and Old Latin).",)
+    ct.italic("per se una (self-containing; the Latin).®")
     divider.space(60)
 
     ct.bold("MBTI vs. FFM (Five-Factor-Model)")
     st.markdown("""
         <style>
-        .bottom-aligned-image-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            height: 100%;
-        }
-        .bottom-aligned-image {
-            width: 100%;
-            object-fit: contain;
-            margin-bottom: 10px;
+        .stImage > img {
+            display: block;
+            margin: auto;
         }
         .image-caption {
             text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
         }
         </style>
         """, unsafe_allow_html=True)
+
+    # 이미지 로드
     image1 = Image.open("./data/img/mbti.png")
     image2 = Image.open("./data/img/bigFive.png")
+
     # 두 개의 컬럼 생성
     col1, col2 = st.columns(2)
 
     # 첫 번째 컬럼에 MBTI 이미지 표시
     with col1:
-        st.markdown('<div class="bottom-aligned-image-container">', unsafe_allow_html=True)
-        st.markdown('<div class="bottom-aligned-image">', unsafe_allow_html=True)
-        st.image(image1, use_column_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.image(image1)
         st.markdown('<p class="image-caption">MBTI</p>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     # 두 번째 컬럼에 Big Five 이미지 표시
     with col2:
-        st.markdown('<div class="bottom-aligned-image-container">', unsafe_allow_html=True)
-        st.markdown('<div class="bottom-aligned-image">', unsafe_allow_html=True)
-        st.image(image2, use_column_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.image(image2)
         st.markdown('<p class="image-caption">Big Five</p>', unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
+    divider.space(60)
     
     ct.bold("MBTI vs. FFM (Five-Factor-Model)")
     st.image("./data/img/mbtiVsFfm.png", use_column_width=True)
@@ -77,11 +67,11 @@ def show_content():
 
     ct.bold("FFM (Five-Factor-Model)")
     divider.space(20)
-    ct.regularNoLink("Lexical hypothesis")
-    ct.regularNoLink("  1. Those personality characteristics that are important to a group of people will eventually become a part of that group's language.")
-    ct.regularNoLink("  2. More important personality characteristics are more likely to be encoded into language as a single word.")
+    ct.regular("Lexical hypothesis")
+    ct.regular("  1. Those personality characteristics that are important to a group of people will eventually become a part of that group's language.")
+    ct.regular("  2. More important personality characteristics are more likely to be encoded into language as a single word.")
     divider.space(20)
-    ct.regularNoLink("Clustering words / Factor Analysis")
+    ct.regular("Clustering words / Factor Analysis")
     divider.space(60)
 
     ct.bold("MBTI (Myers-Briggs personality typing system)")
@@ -171,35 +161,35 @@ def show_content():
     ct.link2("https://test2.thepersonalitylab.org/version-test/v2_mobile_big", "https://test2.thepersonalitylab.org/version-test/v2_mobile_big")
     divider.space(60)
 
-    ct.bold("Personality traits ")
-    ct.regularNoLink("Patterns of thought, feeling, and behaviour that are relatively enduring across an individual’s life span.")
+    ct.bold("Personality traits")
+    ct.regular("Patterns of thought, feeling, and behaviour that are relatively enduring across an individual’s life span.")
     divider.space(40)
     ct.bold("Openness to Experience")
-    ct.regularNoLink("This trait reflects how open-minded, imaginative, and willing to try new things a person is.")
-    ct.regularNoLink("Individuals high in openness are curious, creative, and enjoy exploring new ideas and experiences.")
-    ct.regularNoLink("Those low in openness tend to be more traditional, prefer routine, and are less comfortable with change.")
+    ct.regular("This trait reflects how open-minded, imaginative, and willing to try new things a person is.")
+    ct.regular("Individuals high in openness are curious, creative, and enjoy exploring new ideas and experiences.")
+    ct.regular("Those low in openness tend to be more traditional, prefer routine, and are less comfortable with change.")
     divider.space(40)
 
     ct.bold("Conscientiousness")
-    ct.regularNoLink("This trait measures a person’s degree of organization, dependability, and discipline.")
-    ct.regularNoLink("High conscientiousness is associated with being thorough, careful, and efficient, often linked to strong work ethic and reliability.")
-    ct.regularNoLink("Low conscientiousness may manifest as being more spontaneous, less organized, and sometimes more easy-going.")
+    ct.regular("This trait measures a person’s degree of organization, dependability, and discipline.")
+    ct.regular("High conscientiousness is associated with being thorough, careful, and efficient, often linked to strong work ethic and reliability.")
+    ct.regular("Low conscientiousness may manifest as being more spontaneous, less organized, and sometimes more easy-going.")
     divider.space(40)
     ct.bold("Extraversion")
-    ct.regularNoLink("This trait describes the extent to which a person is sociable, outgoing, and enjoys interacting with others. ")
-    ct.regularNoLink("High extraversion is linked to being energetic, talkative, and assertive.")
-    ct.regularNoLink("Those low in extraversion (introverts) tend to be more reserved, quiet, and enjoy solitary activities or smaller, more intimate social settings.")
+    ct.regular("This trait describes the extent to which a person is sociable, outgoing, and enjoys interacting with others. ")
+    ct.regular("High extraversion is linked to being energetic, talkative, and assertive.")
+    ct.regular("Those low in extraversion (introverts) tend to be more reserved, quiet, and enjoy solitary activities or smaller, more intimate social settings.")
     divider.space(40)
 
     ct.bold("Agreeableness")
-    ct.regularNoLink("This trait reflects a person’s tendency to be compassionate, cooperative, and willing to help others.")
-    ct.regularNoLink("People high in agreeableness are often kind, empathetic, and good-natured,")
-    ct.regularNoLink("whereas those low in agreeableness may be more competitive, skeptical, or even confrontational.")
+    ct.regular("This trait reflects a person’s tendency to be compassionate, cooperative, and willing to help others.")
+    ct.regular("People high in agreeableness are often kind, empathetic, and good-natured,")
+    ct.regular("whereas those low in agreeableness may be more competitive, skeptical, or even confrontational.")
     divider.space(40)
     ct.bold("Neuroticism")
-    ct.regularNoLink("This trait indicates how prone a person is to experiencing negative emotions like anxiety, anger, or depression.")
-    ct.regularNoLink("High neuroticism is associated with emotional instability and vulnerability to stress.")
-    ct.regularNoLink("Conversely, low neuroticism is linked to emotional resilience, calmness, and stability")
+    ct.regular("This trait indicates how prone a person is to experiencing negative emotions like anxiety, anger, or depression.")
+    ct.regular("High neuroticism is associated with emotional instability and vulnerability to stress.")
+    ct.regular("Conversely, low neuroticism is linked to emotional resilience, calmness, and stability")
     divider.space(60)
 
 
