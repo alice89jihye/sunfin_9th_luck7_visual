@@ -45,5 +45,13 @@ def show():
     customText.title("Methodology")
     scrollFadeIn.scroll_fade_in(methodology_content(), "Methodology")
 
+    from pages.resultsPage import show_content as result_content
+    customText.title("Results")
+    scrollFadeIn.scroll_fade_in(result_content(), "Results")
+
+    from pages.conclusionPage import show_content as conclusion_content
+    customText.title("Conclusion")
+    scrollFadeIn.scroll_fade_in(conclusion_content(), "Conclusion")
+
 
 show()

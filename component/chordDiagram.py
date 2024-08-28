@@ -115,7 +115,7 @@ def show(df: pd.DataFrame):
     """
     
     # Render HTML and JS code in Streamlit
-    components.html(html_code, height=600)
+    components.html(html_code, height=800)
 
 
 

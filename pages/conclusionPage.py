@@ -5,7 +5,7 @@ from component.font import customText as ct
 from PIL import Image
 
 def show_content():
-    ct.subheaderNoLink("Data: ChaLearn First Impression V2 (CVPR’17)")
+    ct.subheaderNoLink("Predicted Results for Each Individual")
     st.image("./data/img/chaLearn.png", use_column_width=True)
     ct.link2("https://chalearnlap.cvc.uab.cat/dataset/24/description/","https://chalearnlap.cvc.uab.cat/dataset/24/description/")
     divider.space(60)
@@ -186,6 +186,12 @@ def show_content():
     st.markdown(html_content, unsafe_allow_html=True)
     divider.space(20)
     ct.caption("Software: Python, Streamlit")
+    divider.space(60)
+
+    ct.boldNoLink("")
+    ct.regularNoLink("")
+    ct.regularNoLink("")
+    ct.regularNoLink("")
     divider.space(60)
 
 

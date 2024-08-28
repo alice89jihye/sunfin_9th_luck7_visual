@@ -73,7 +73,6 @@ def show(df: pd.DataFrame):
         highlightColor="#F7A7A6",
     )
     
-    st.title('Full Name Network Graph with Nearest Neighbors and Job Colors')
     agraph(nodes=nodes, edges=edges, config=config)
     
     # 범례 생성

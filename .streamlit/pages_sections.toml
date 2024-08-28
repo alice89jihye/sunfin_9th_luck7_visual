@@ -28,5 +28,18 @@ path = "pages/methodologyPage.py"
 name = "Methodology"
 icon = ""
 
+[[pages]]
+path = "pages/resultsPage.py"
+name = "Results"
+icon = ""
 
+[[pages]]
+name = "😊"
+icon = ""
+is_section = true
+
+[[pages]]
+path = "pages/conclusionPage.py"
+name = "Conclusion"
+icon = ""
 
