@@ -92,7 +92,6 @@ def show_content():
     name = "박현우 교수님"
     file_id = '1umHddegTEOEeNwolh8XH7Qo0gu0ppE0r'
     download_url = f'https://drive.google.com/uc?id={file_id}'
-    # image_path = "./data/images_for_prediction/09_박현우교수님.png"
 
     traits = {
         "Openness": 0.002,
@@ -105,9 +104,6 @@ def show_content():
     divider.space(60)
 
     image_paths = [
-        # "./data/images_for_prediction/04_동근1.png",
-        # "./data/images_for_prediction/05_동근2.png",
-        # "./data/images_for_prediction/06_동근3.png"
         "https://drive.google.com/uc?id=16xsCvAmN326XdNgQUVUw-3yyC44IF6zM",
         "https://drive.google.com/uc?id=1hRlbpYfMaqZrgRaX7nM8bBEufH4iT7Ip",
         "https://drive.google.com/uc?id=19CpzVV8sXsNn0X7EexIU65fHOiFXwvxB",
@@ -161,9 +157,7 @@ def show_content():
     divider.space(60)
 
     image_paths = [
-        #"./data/images_for_prediction/10_병현님1.png",
         "https://drive.google.com/uc?id=10DLLv_vf9PHGIoxDpkd95ps_-zonDKUb",
-        # "./data/images_for_prediction/11_병현님2.png",
         "https://drive.google.com/uc?id=1RcZwZn3XPNY6CZ7Y_AKYeG4VP9uR03r1",
     ]
     
@@ -176,9 +170,7 @@ def show_content():
     divider.space(60)
 
     image_paths = [
-        #"./data/images_for_prediction/25_김소현1.png",
         "https://drive.google.com/uc?id=1cIoNDsHQJaLY9_hGFclnXcjTLwJma5zh",
-        #"./data/images_for_prediction/26_김소현2.png",
         "https://drive.google.com/uc?id=1iIef2ILe5XlH7F6su-ebTg6Hr-BEqqK-",
     ]
     
@@ -209,11 +201,9 @@ def show_content():
         describe_by_job = filtered_df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']].describe()
 
         # 1행: 요약 통계 출력
-        # st.write("### Summary Statistics")
         st.dataframe(describe_by_job)
 
         # 2행: 히스토그램 그리기
-        # st.write("### Histogram of Traits")
 
         # 2행에 3개의 열 생성
         col1, col2, col3 = st.columns(3)
