@@ -35,9 +35,6 @@ def show_content():
             img_resized.save(buffered, format="PNG")
             return base64.b64encode(buffered.getvalue()).decode()
 
-    # 현재 파일의 위치를 기준으로 상대 경로 설정
-    current_dir = os.path.dirname(__file__)
-
     def show_profile(name, image_path, traits, width=300):
         col1, col2 = st.columns([1, 1])
         
@@ -47,15 +44,14 @@ def show_content():
             for trait, value in traits.items():
                 st.markdown(f"● {trait}: {value:.3f}")
         
-        imgPath = os.path.join(current_dir, image_path)
         time.sleep(1)
         with col1:
             # 이미지 파일 존재 확인
-            if os.path.exists():
+            if os.path.exists(image_path):
                 try:
                     # 이미지 크기 계산 및 리사이즈
-                    img_width, img_height = get_image_size(imgPath, width)
-                    img_base64 = resize_image(imgPath, width)
+                    img_width, img_height = get_image_size(image_path, width)
+                    img_base64 = resize_image(image_path, width)
                     
                     # HTML로 이미지와 캡션 표시
                     html_content = f"""
@@ -83,7 +79,7 @@ def show_content():
                 except Exception as e:
                     st.error(f"이미지를 불러오는 데 문제가 발생했습니다: {e}")
             else:
-                st.error(f"이미지 파일을 찾을 수 없습니다: {imgPath}")
+                st.error(f"이미지 파일을 찾을 수 없습니다: {image_path}")
 
 
     name = "박현우 교수님"
@@ -132,7 +128,7 @@ def show_content():
         # Display images in columns, skipping the first column
         for i, img_path in enumerate(image_paths, 1):
             with cols[i]:  # Use cols[i] to skip the first column
-                img = Image.open(os.path.join(current_dir, img_path))
+                img = Image.open(img_path)
                 st.image(img, use_column_width=True, caption=f"{keys_list[i]}")
 
         # Table display
