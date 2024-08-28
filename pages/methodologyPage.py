@@ -45,7 +45,8 @@ def show_content():
     divider.space(10)
     st.image("./data/img/videoSamplesTest1.png", use_column_width=True)
     divider.space(20)
-    st.image("./data/img/videoSamplesTest2.png", use_column_width=True)
+    # st.image("./data/img/videoSamplesTest2.png", use_column_width=True)
+    st.code("librosa.display.specshow(mfccs[0], x_axis='time', y_axis='mel')\nlibrosa.display.specshow(mfccs[1], x_axis='time', y_axis='mel')\nlibrosa.display.specshow(mfccs[2], x_axis='time', y_axis='mel')")
 
     image1 = Image.open("./data/img/videoSamplesTest3.png")
     image2 = Image.open("./data/img/videoSamplesTest4.png")
@@ -77,17 +78,14 @@ def show_content():
             margin-left: 40px;
         }
         .large-text {
-            font-size: 14px;
-        }
-        .medium-text {
-            font-size: 14px;
+            font-size: 16px;
         }
     </style>
 
     <div class="container">
         <div class="input">
             <div class="large-text">X: Audio data and image data</div>
-            <div class="medium-text">y: Personality traits annotation</div>
+            <div class="large-text">y: Personality traits annotation</div>
         </div>
     </div>
     """
@@ -100,9 +98,9 @@ def show_content():
     divider.space(60)
     
     ct.subheader("2. Use the Original Model as a Pre-Trained Model")
-    st.image("./data/img/model4.png", use_column_width=True)
+    st.image("./data/img/model4.png", use_column_width=False)
     st.image("./data/img/model5.png", use_column_width=True)
-    st.image("./data/img/model6.png", use_column_width=True)
+    st.image("./data/img/model6.png", use_column_width=False)
     divider.space(60)
 
     ct.subheader("3. Prediction")

@@ -62,7 +62,66 @@ def show_content():
     divider.space(60)
     
     ct.bold("MBTI vs. FFM (Five-Factor-Model)")
-    st.image("./data/img/mbtiVsFfm.png", use_column_width=True)
+    data = {
+        "Aspect": [
+            "Foundation", "Core Concept", "Number of Dimensions", "Measurement Approach", 
+            "Outcome", "Nuance in Results", "Perspective on Self-Improvement", 
+            "View on Personality Dynamics", "Optimism/Positivity", "Use in Professional Settings", 
+            "Basis of Evaluation", "Correlation with Each Other"
+        ],
+        "Myers-Briggs personality typing system (MBTI)": [
+            "Personality types", "Identifies you as belonging to one of 16 personality types", 
+            "Four pairs of opposing traits (e.g., Introversion vs. Extraversion)", 
+            "Either/or choices that categorize into one side of each dichotomy", 
+            "Four-letter personality type (e.g., INTJ, ESTP)", 
+            "Limited use of spectrum, focuses on dominant preferences", 
+            "All types are equally valid, no type is better than another", 
+            "Preferences are not absolute; traits can shift depending on circumstances", 
+            "Neutral stance; focuses on managing emotions and maximizing personal potential", 
+            "Less common, mainly for personal insight", 
+            "Theoretical psychological concepts", 
+            "Some correlation; for example, INTJs often score high on Openness and Conscientiousness in Big Five"
+        ],
+        "Five-Factor Model (FFM) / Big Five": [
+            "Personality traits", "Measures personality on five broad dimensions", 
+            "Five dimensions (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism)", 
+            "Spectrum or continuum approach, giving a percentage score for each trait", 
+            "High, low, or average scores in each of the five traits, no specific 'type'", 
+            "High nuance, as traits are measured along a continuum", 
+            "Some traits are viewed as healthier or more desirable than others", 
+            "Continuum allows for more nuanced self-assessment and potential for growth", 
+            "More critical; identifies areas where improvement is necessary for better adjustment", 
+            "Widely used in hiring and professional development, considered more scientifically valid", 
+            "Empirical data from personality research", 
+            "Distinct systems, but with some complementary"
+        ]
+    }
+    df = pd.DataFrame(data).reset_index(drop=True)
+    st.markdown("""
+        <style>
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            word-wrap: break-word;
+            white-space: normal;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f2f2f2;
+            text-align: center;
+        }
+        .table tr {
+            height: 80px; /* 행 높이 조정 */
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
+    # 데이터프레임을 HTML로 렌더링
+    st.markdown(df.to_html(classes='table', index=False), unsafe_allow_html=True)
     divider.space(60)
 
     ct.bold("FFM (Five-Factor-Model)")
@@ -78,7 +137,7 @@ def show_content():
     st.markdown("""
         <style>
             .mbti-question {
-                font-size: 12px;
+                font-size: 16px;
                 margin-bottom: 10px;
             }
             .mbti-question-title {

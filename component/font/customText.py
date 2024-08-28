@@ -122,17 +122,20 @@ def caption(text, color=None, margin_bottom="6px", font_size="14px"):
         unsafe_allow_html=True
     )
 
-def code(text, background_color="#f0f0f0", margin_bottom="10px", font_size="14px"):
+def code(text, background_color="#1e1e1e", text_color="#ffffff", margin_bottom="10px", font_size="14px"):
     st.markdown(
         f"""
         <style>
         .custom-code {{
             font-family: monospace;
             background-color: {background_color};
+            color: {text_color};
             padding: 4px 8px;
             border-radius: 4px;
             font-size: {font_size};
             margin-bottom: {margin_bottom};
+            display: block;
+            white-space: pre-wrap;
         }}
         </style>
         <code class="custom-code">{text}</code>
