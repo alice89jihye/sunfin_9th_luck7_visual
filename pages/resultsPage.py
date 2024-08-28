@@ -108,7 +108,8 @@ def show_content():
         "Neuroticism": 0.002
     }
     show_profile(name, download_url, traits)
-    divider.space(60)
+    divider.divider("#d0d0d0")
+    divider.space(40)
 
     image_paths = [
         "https://drive.google.com/uc?id=16xsCvAmN326XdNgQUVUw-3yyC44IF6zM",

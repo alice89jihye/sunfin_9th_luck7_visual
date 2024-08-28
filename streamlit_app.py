@@ -6,7 +6,7 @@ st.set_page_config(
     page_title='Personality Traits Predicted from One’s Face',
     page_icon=':seven:',
     layout="wide",
-    initial_sidebar_state="collapsed"
+    initial_sidebar_state="expanded"
 )
 
 # sidebar 설정

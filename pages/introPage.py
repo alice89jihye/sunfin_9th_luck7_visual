@@ -1,5 +1,5 @@
 import streamlit as st
-from component import divider, scrollFadeIn
+from component import divider
 from component.font import customText as ct
 
 def show_intro_content():
@@ -40,31 +40,31 @@ def show_intro_content():
 
 def show():
     show_intro_content()
-    divider.divider("#d0d0d0")
+    # divider.divider("#d0d0d0")
     
-    from pages.componentOfPersonalityPage import show_content as personality_content
-    ct.title("Component of Personality")
-    scrollFadeIn.scroll_fade_in(personality_content(), "Component of Personality")
+    # ct.title("Component of Personality")
+    # from pages.componentOfPersonalityPage import show_content as personality_content
+    # personality_content()
 
-    divider.divider("#d0d0d0")
-    from pages.goalsOfTheProjectPage import show_content as project_content
-    ct.title("Goals of the Project")
-    scrollFadeIn.scroll_fade_in(project_content(), "Goals of the Project")
+    # divider.divider("#d0d0d0")
+    # from pages.goalsOfTheProjectPage import show_content as project_content
+    # ct.title("Goals of the Project")
+    # project_content()
 
-    divider.divider("#d0d0d0")
-    from pages.methodologyPage import show_content as methodology_content
-    ct.title("Methodology")
-    scrollFadeIn.scroll_fade_in(methodology_content(), "Methodology")
+    # divider.divider("#d0d0d0")
+    # from pages.methodologyPage import show_content as methodology_content
+    # ct.title("Methodology")
+    # methodology_content()
 
-    divider.divider("#d0d0d0")
-    from pages.resultsPage import show_content as result_content
-    ct.title("Results")
-    scrollFadeIn.scroll_fade_in(result_content(), "Results")
+    # divider.divider("#d0d0d0")
+    # from pages.resultsPage import show_content as result_content
+    # ct.title("Results")
+    # result_content()
 
-    divider.divider("#d0d0d0")
-    from pages.conclusionPage import show_content as conclusion_content
-    ct.title("Conclusion")
-    scrollFadeIn.scroll_fade_in(conclusion_content(), "Conclusion")
+    # divider.divider("#d0d0d0")
+    # from pages.conclusionPage import show_content as conclusion_content
+    # ct.title("Conclusion")
+    # conclusion_content()
 
 
 show()
