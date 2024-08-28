@@ -143,7 +143,8 @@ def show_content():
             'Openness': '{:.3f}'
         }),
         height=300,
-        use_container_width=True
+        use_container_width=True,
+        hide_index=True
     )
 
     # CSS를 사용한 추가 스타일링
