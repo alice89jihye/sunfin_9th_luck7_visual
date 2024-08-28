@@ -5,7 +5,6 @@ from component.font import customText as ct
 from PIL import Image
 import time
 import streamlit.components.v1 as components
-import os
 import base64
 from io import BytesIO
 import matplotlib.pyplot as plt
@@ -13,7 +12,6 @@ import seaborn as sns
 from sklearn.neighbors import NearestNeighbors
 from component import agraph, chordDiagram
 import requests
-
 
 def show_content():
     st.markdown("""
@@ -154,7 +152,7 @@ def show_content():
                     
                     # Open image
                     img = Image.open(BytesIO(response.content))
-                    st.image(img, use_column_width=True, caption=f"{keys_list[i-1]}")
+                    st.image(img, use_column_width=True, caption=f"{keys_list[i]}")
                 except Exception as e:
                     st.error(f"Failed to load image from {image_url}: {e}")
 
@@ -163,6 +161,38 @@ def show_content():
         st.dataframe(df.style.format("{:.3f}"), use_container_width=True)
 
     show_images_and_table(image_paths, data)
+    dfs = pd.read_excel('data/stu_trait.xlsx', sheet_name=None)
+    df_a = dfs['박동근']
+    df_b = dfs['김병현']
+    df_c = dfs['김소현']
+
+    dfa = df_a
+
+    # 그래프 설정
+    plt.rcParams['axes.unicode_minus'] = False
+    light_sky_blue = "#87CEFA"  # 연하늘색
+
+    fig, axes = plt.subplots(nrows=1, ncols=5, figsize=(20, 5))
+
+    # 각 Trait별로 그래프 생성
+    traits = dfa['Trait']
+    for i, trait in enumerate(traits):
+        ax = axes[i]
+        # Trait에 해당하는 행을 필터링
+        trait_data = dfa[dfa['Trait'] == trait].iloc[0, 1:]  # Trait에 해당하는 데이터
+        ax.bar(dfa.columns[1:], trait_data, color=light_sky_blue)
+        ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
+        ax.set_title(trait)
+
+        # 각 막대 위에 수치 표시
+        for j, value in enumerate(trait_data):
+            ax.text(j, value + (trait_data.max() * 0.02), f'{value:.3f}', ha='center')
+
+    # 레이아웃 조정
+    plt.tight_layout()
+
+    # Streamlit에서 그래프 표시
+    st.pyplot(fig)
     divider.space(60)
 
     image_paths = [
@@ -176,6 +206,27 @@ def show_content():
         '김병현 2': [0.003, 0.013, 0.002, 0.596, 0.000],
     }
     show_images_and_table(image_paths, data)
+    dfb = df_b
+    fig, axes = plt.subplots(nrows=1, ncols=5, figsize=(20, 5))
+    # 각 Trait별로 그래프 생성
+    traits = dfb['Trait']
+    for i, trait in enumerate(traits):
+        ax = axes[i]
+        # Trait에 해당하는 데이터 필터링
+        trait_data = dfb[dfb['Trait'] == trait].iloc[0, 1:]
+        ax.bar(dfb.columns[1:], trait_data, color=light_sky_blue)
+        ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
+        ax.set_title(trait)
+
+        # 각 막대 위에 수치 표시
+        for j, value in enumerate(trait_data):
+            ax.text(j, value + (trait_data.max() * 0.02), f'{value:.3f}', ha='center')
+
+    # 레이아웃 조정
+    plt.tight_layout()
+
+    # Streamlit에서 그래프 표시
+    st.pyplot(fig)
     divider.space(60)
 
     image_paths = [
@@ -189,10 +240,32 @@ def show_content():
         '김소현 2': [0.024, 0.000, 0.000, 0.178, 0.002],
     }
     show_images_and_table(image_paths, data)
+    dfc = df_c
+    fig, axes = plt.subplots(nrows=1, ncols=5, figsize=(20, 5))
+    # 각 Trait별로 그래프 생성
+    traits = dfc['Trait']
+    for i, trait in enumerate(traits):
+        ax = axes[i]
+        # Trait에 해당하는 데이터 필터링
+        trait_data = dfc[dfc['Trait'] == trait].iloc[0, 1:]
+        ax.bar(dfc.columns[1:], trait_data, color=light_sky_blue)
+        ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
+        ax.set_title(trait)
+
+        # 각 막대 위에 수치 표시
+        for j, value in enumerate(trait_data):
+            ax.text(j, value + (trait_data.max() * 0.02), f'{value:.3f}', ha='center')
+
+    # 레이아웃 조정
+    plt.tight_layout()
+
+    # Streamlit에서 그래프 표시
+    st.pyplot(fig)
     divider.space(60)
 
     ct.subheader("Descriptive Statistics")
     df = pd.read_csv('data/df3_after_cls_with_name.csv')
+    
     describe_traits = df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']].describe()
     st.dataframe(describe_traits)
     divider.space(60)
