@@ -37,18 +37,22 @@ def show():
     customText.title("Component of Personality")
     scrollFadeIn.scroll_fade_in(personality_content(), "Component of Personality")
 
+    divider.divider("#d0d0d0")
     from pages.goalsOfTheProjectPage import show_content as project_content
     customText.title("Goals of the Project")
     scrollFadeIn.scroll_fade_in(project_content(), "Goals of the Project")
 
+    divider.divider("#d0d0d0")
     from pages.methodologyPage import show_content as methodology_content
     customText.title("Methodology")
     scrollFadeIn.scroll_fade_in(methodology_content(), "Methodology")
 
+    divider.divider("#d0d0d0")
     from pages.resultsPage import show_content as result_content
     customText.title("Results")
     scrollFadeIn.scroll_fade_in(result_content(), "Results")
 
+    divider.divider("#d0d0d0")
     from pages.conclusionPage import show_content as conclusion_content
     customText.title("Conclusion")
     scrollFadeIn.scroll_fade_in(conclusion_content(), "Conclusion")
