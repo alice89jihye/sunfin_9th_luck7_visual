@@ -19,15 +19,15 @@ def show_content():
 
     # 추가적인 스타일링을 위한 CSS (선택사항)
     st.markdown("""
-    <style>
-        ol {
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-    </style>
-    """, unsafe_allow_html=True)
+        <style>
+            ol {
+                padding-left: 20px;
+            }
+            li {
+                margin-bottom: 10px;
+            }
+        </style>
+        """, unsafe_allow_html=True)
 
     divider.space(60)
 

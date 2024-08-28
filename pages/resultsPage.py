@@ -46,7 +46,6 @@ def show_content():
         
         # 성격 특성 정보 표시
         with col2:
-            st.markdown(f"**{name}'s Personality Traits**")
             for trait, value in traits.items():
                 st.markdown(f"● {trait}: {value:.3f}")
         
@@ -325,13 +324,14 @@ def show_content():
     st.dataframe(combined_df)
     divider.space(60)
 
-    ct.caption("Network Graph")
+    ct.boldNoLink("Network Graph")
     ct.caption("(* the edge weights in the graph: Euclidean distance)")
     agraph.show(df)
     divider.space(60)
     
-    ct.caption("Chord Diagram")
+    ct.boldNoLink("Chord Diagram")
     chordDiagram.show(df)
+    divider.space(60)
     
 
 

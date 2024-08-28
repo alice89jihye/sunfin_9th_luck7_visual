@@ -15,17 +15,20 @@ def show_content():
     divider.space(60)
 
     ct.subheaderNoLink("Summary of Procedures")
-    """
-    1. Train the original model
-       * 5999 Training set, 1997 Validation set, 240 Test set
-       * MobileNet V2 architecture
+    st.markdown(
+        """
+        1. Train the original model
+            * 5999 Training set, 1997 Validation set, 240 Test set
+            * MobileNet V2 architecture
 
-    2. Use the original model as a Pre-Trained model
+        2. Use the original model as a Pre-Trained model
 
-    3. Prediction
+        3. Prediction
 
-    4. Visualization
-    """
+        4. Visualization
+        """
+    )
+    
     divider.space(60)
 
     ct.subheaderNoLink("1. Training the original model")
