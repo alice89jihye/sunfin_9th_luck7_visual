@@ -261,20 +261,20 @@ def show_content():
 
     # Streamlit에서 그래프 표시
     st.pyplot(fig)
-    divider.space(60)
+    divider.space(80)
 
     ct.subheader("Descriptive Statistics")
     df = pd.read_csv('data/df3_after_cls_with_name.csv')
     
     describe_traits = df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']].describe()
-    st.dataframe(describe_traits)
+    st.dataframe(describe_traits, use_container_width=True)
     divider.space(60)
 
     ct.subheader("Distribution of Personality Traits per Job")
     job_list = df['job'].unique()
     # 각 직군별로 데이터를 출력하는 for 루프
     for job in job_list:
-        ct.bold(f"Traits Summary and Distribution for Job: {job}")
+        ct.bold(f"* {job}")
 
         # 해당 직군에 해당하는 데이터 필터링
         filtered_df = df[df['job'] == job]
@@ -283,7 +283,7 @@ def show_content():
         describe_by_job = filtered_df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']].describe()
 
         # 1행: 요약 통계 출력
-        st.dataframe(describe_by_job)
+        st.dataframe(describe_by_job, use_container_width=True)
 
         # 히스토그램 그리기
         traits = ['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
@@ -395,11 +395,11 @@ def show_content():
     value2 = value2.iloc[:, [value2.columns.get_loc(c) for c in ['Name', 'Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness', 'Distance']]]
 
     ct.caption("Knn (k=4)")
-    st.dataframe(value1)
+    st.dataframe(value1, use_container_width=True, hide_index=True)
     divider.space(20)
 
     ct.caption("Knn (k=4)")
-    st.dataframe(value2)
+    st.dataframe(value2, use_container_width=True, hide_index=True)
     divider.space(60)
 
     ct.bold("Network Graph")
