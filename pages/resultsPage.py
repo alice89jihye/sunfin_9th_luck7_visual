@@ -12,46 +12,55 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.neighbors import NearestNeighbors
 from component import agraph, chordDiagram
+import requests
 
 
 def show_content():
     ct.subheaderNoLink("Predicted Results for Each Individual")
     divider.space(20)
+    
+    def get_image_size(image, width):
+        # 이미지 열기 및 크기 계산
+        img = Image.open(BytesIO(image))
+        img_width, img_height = img.size
+        aspect_ratio = img_height / img_width
+        img_height = int(width * aspect_ratio)
+        return img_width, img_height
 
-    def get_image_size(image_path, width):
-        with Image.open(image_path) as img:
-            w, h = img.size
-            aspect_ratio = h / w
-            new_height = int(width * aspect_ratio)
-            return width, new_height
+    def resize_image(image, width):
+        # 이미지 열기
+        img = Image.open(BytesIO(image))
+        img_width, img_height = img.size
+        aspect_ratio = img_height / img_width
+        new_height = int(width * aspect_ratio)
+        img = img.resize((width, new_height), Image.LANCZOS)
+        
+        # 이미지를 base64로 인코딩
+        buffered = BytesIO()
+        img.save(buffered, format="PNG")
+        img_base64 = base64.b64encode(buffered.getvalue()).decode()
+        return img_base64
 
-    def resize_image(image_path, width):
-        with Image.open(image_path) as img:
-            w, h = img.size
-            aspect_ratio = h / w
-            new_height = int(width * aspect_ratio)
-            img_resized = img.resize((width, new_height), Image.LANCZOS)
-            buffered = BytesIO()
-            img_resized.save(buffered, format="PNG")
-            return base64.b64encode(buffered.getvalue()).decode()
-
-    def show_profile(name, image_path, traits, width=300):
+    def show_profile(name, image_url, traits, width=300):
         col1, col2 = st.columns([1, 1])
         
         # 성격 특성 정보 표시
         with col2:
-            divider.space(120)
+            st.markdown(f"**{name}'s Personality Traits**")
             for trait, value in traits.items():
                 st.markdown(f"● {trait}: {value:.3f}")
         
         time.sleep(1)
         with col1:
-            # 이미지 파일 존재 확인
-            if os.path.exists(image_path):
-                try:
-                    # 이미지 크기 계산 및 리사이즈
-                    img_width, img_height = get_image_size(image_path, width)
-                    img_base64 = resize_image(image_path, width)
+            try:
+                # 이미지 다운로드
+                response = requests.get(image_url)
+                response.raise_for_status()
+                
+                # 이미지가 성공적으로 다운로드되었는지 확인
+                if response.status_code == 200:
+                    img_base64 = resize_image(response.content, width)
+                    img_width, img_height = get_image_size(response.content, width)
                     
                     # HTML로 이미지와 캡션 표시
                     html_content = f"""
@@ -76,14 +85,16 @@ def show_content():
                     </div>
                     """
                     components.html(html_content, height=img_height+50)  # 캡션을 위해 추가 공간 확보
-                except Exception as e:
-                    st.error(f"이미지를 불러오는 데 문제가 발생했습니다: {e}")
-            else:
-                st.error(f"이미지 파일을 찾을 수 없습니다: {image_path}")
-
+                else:
+                    st.error("Failed to download image from Google Drive.")
+            except Exception as e:
+                st.error(f"이미지를 불러오는 데 문제가 발생했습니다: {e}")
 
     name = "박현우 교수님"
-    image_path = "./data/images_for_prediction/09_박현우교수님.png"
+    file_id = '1umHddegTEOEeNwolh8XH7Qo0gu0ppE0r'
+    download_url = f'https://drive.google.com/uc?id={file_id}'
+    # image_path = "./data/images_for_prediction/09_박현우교수님.png"
+
     traits = {
         "Openness": 0.002,
         "Conscientiousness": 0.000,
@@ -91,13 +102,16 @@ def show_content():
         "Agreeableness": 0.726,
         "Neuroticism": 0.002
     }
-    show_profile(name, image_path, traits)
+    show_profile(name, download_url, traits)
     divider.space(60)
 
     image_paths = [
-        "./data/images_for_prediction/04_동근1.png",
-        "./data/images_for_prediction/05_동근2.png",
-        "./data/images_for_prediction/06_동근3.png"
+        # "./data/images_for_prediction/04_동근1.png",
+        # "./data/images_for_prediction/05_동근2.png",
+        # "./data/images_for_prediction/06_동근3.png"
+        "https://drive.google.com/uc?id=16xsCvAmN326XdNgQUVUw-3yyC44IF6zM",
+        "https://drive.google.com/uc?id=1hRlbpYfMaqZrgRaX7nM8bBEufH4iT7Ip",
+        "https://drive.google.com/uc?id=19CpzVV8sXsNn0X7EexIU65fHOiFXwvxB",
     ]
     
     data = {
@@ -107,7 +121,7 @@ def show_content():
         '박동근 3': [0.015, 0.001, 0.000, 0.850, 0.011]
     }
 
-    def show_images_and_table(image_paths, data):
+    def show_images_and_table(image_urls, data):
         # CSS for layout
         st.markdown("""
         <style>
@@ -122,26 +136,36 @@ def show_content():
         """, unsafe_allow_html=True)
 
         # Create columns for images plus one empty column
-        cols = st.columns(len(image_paths) + 1)
+        cols = st.columns(len(image_urls) + 1)
 
         keys_list = list(data.keys())
+
         # Display images in columns, skipping the first column
-        for i, img_path in enumerate(image_paths, 1):
+        for i, image_url in enumerate(image_urls, 1):
             with cols[i]:  # Use cols[i] to skip the first column
-                img = Image.open(img_path)
-                st.image(img, use_column_width=True, caption=f"{keys_list[i]}")
+                try:
+                    # Download image
+                    response = requests.get(image_url)
+                    response.raise_for_status()
+                    
+                    # Open image
+                    img = Image.open(BytesIO(response.content))
+                    st.image(img, use_column_width=True, caption=f"{keys_list[i-1]}")
+                except Exception as e:
+                    st.error(f"Failed to load image from {image_url}: {e}")
 
         # Table display
         df = pd.DataFrame(data).set_index('Trait')
         st.dataframe(df.style.format("{:.3f}"), use_container_width=True)
 
-
     show_images_and_table(image_paths, data)
     divider.space(60)
 
     image_paths = [
-        "./data/images_for_prediction/10_병현님1.png",
-        "./data/images_for_prediction/11_병현님2.png",
+        #"./data/images_for_prediction/10_병현님1.png",
+        "https://drive.google.com/uc?id=10DLLv_vf9PHGIoxDpkd95ps_-zonDKUb",
+        # "./data/images_for_prediction/11_병현님2.png",
+        "https://drive.google.com/uc?id=1RcZwZn3XPNY6CZ7Y_AKYeG4VP9uR03r1",
     ]
     
     data = {
@@ -153,8 +177,10 @@ def show_content():
     divider.space(60)
 
     image_paths = [
-        "./data/images_for_prediction/25_김소현1.png",
-        "./data/images_for_prediction/26_김소현2.png",
+        #"./data/images_for_prediction/25_김소현1.png",
+        "https://drive.google.com/uc?id=1cIoNDsHQJaLY9_hGFclnXcjTLwJma5zh",
+        #"./data/images_for_prediction/26_김소현2.png",
+        "https://drive.google.com/uc?id=1iIef2ILe5XlH7F6su-ebTg6Hr-BEqqK-",
     ]
     
     data = {
@@ -299,9 +325,12 @@ def show_content():
     st.dataframe(combined_df)
     divider.space(60)
 
+    ct.caption("Network Graph")
+    ct.caption("(* the edge weights in the graph: Euclidean distance)")
     agraph.show(df)
     divider.space(60)
     
+    ct.caption("Chord Diagram")
     chordDiagram.show(df)
     
 
