@@ -16,7 +16,16 @@ import requests
 
 
 def show_content():
-    ct.subheaderNoLink("Predicted Results for Each Individual")
+    st.markdown("""
+        <style>
+        .reportview-container .main .block-container {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    ct.subheader("Predicted Results for Each Individual")
     divider.space(20)
     
     def get_image_size(image, width):
@@ -182,17 +191,17 @@ def show_content():
     show_images_and_table(image_paths, data)
     divider.space(60)
 
-    ct.subheaderNoLink("Descriptive Statistics")
+    ct.subheader("Descriptive Statistics")
     df = pd.read_csv('data/df3_after_cls_with_name.csv')
     describe_traits = df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']].describe()
     st.dataframe(describe_traits)
     divider.space(60)
 
-    ct.subheaderNoLink("Distribution of Personality Traits per Job")
+    ct.subheader("Distribution of Personality Traits per Job")
     job_list = df['job'].unique()
     # 각 직군별로 데이터를 출력하는 for 루프
     for job in job_list:
-        ct.boldNoLink(f"Traits Summary and Distribution for Job: {job}")
+        ct.bold(f"Traits Summary and Distribution for Job: {job}")
 
         # 해당 직군에 해당하는 데이터 필터링
         filtered_df = df[df['job'] == job]
@@ -203,63 +212,67 @@ def show_content():
         # 1행: 요약 통계 출력
         st.dataframe(describe_by_job)
 
-        # 2행: 히스토그램 그리기
+        # 히스토그램 그리기
+        traits = ['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
+        
+        # 모든 히스토그램에 대한 공통 설정
+        fig_width, fig_height = 10, 6  # 히스토그램 크기 설정
 
-        # 2행에 3개의 열 생성
+        # 첫 번째 행: 3개의 히스토그램
         col1, col2, col3 = st.columns(3)
-
-        # 각 열에 히스토그램 추가
+        
         with col1:
-            plt.figure(figsize=(15, 10))
-            sns.histplot(filtered_df['Neuroticism'], kde=True, bins=10)
-            plt.title('Neuroticism Distribution')
-            plt.xlabel('Neuroticism')
-            plt.ylabel('Frequency')
+            plt.figure(figsize=(fig_width, fig_height))
+            sns.histplot(filtered_df[traits[0]], kde=True, bins=10)
+            plt.title(f'{traits[0]} Distribution', fontsize=20)
+            plt.xlabel(traits[0], fontsize=16)
+            plt.ylabel('Frequency', fontsize=16)
             st.pyplot(plt)
-            plt.clf()  # 그래프 초기화
+            plt.clf()
 
         with col2:
-            plt.figure(figsize=(15, 10))
-            sns.histplot(filtered_df['Extraversion'], kde=True, bins=10)
-            plt.title('Extraversion Distribution')
-            plt.xlabel('Extraversion')
-            plt.ylabel('Frequency')
+            plt.figure(figsize=(fig_width, fig_height))
+            sns.histplot(filtered_df[traits[1]], kde=True, bins=10)
+            plt.title(f'{traits[1]} Distribution', fontsize=20)
+            plt.xlabel(traits[1], fontsize=16)
+            plt.ylabel('Frequency', fontsize=16)
             st.pyplot(plt)
-            plt.clf()  # 그래프 초기화
+            plt.clf()
 
         with col3:
-            plt.figure(figsize=(15, 10))
-            sns.histplot(filtered_df['Agreeableness'], kde=True, bins=10)
-            plt.title('Agreeableness Distribution')
-            plt.xlabel('Agreeableness')
-            plt.ylabel('Frequency')
+            plt.figure(figsize=(fig_width, fig_height))
+            sns.histplot(filtered_df[traits[2]], kde=True, bins=10)
+            plt.title(f'{traits[2]} Distribution', fontsize=20)
+            plt.xlabel(traits[2], fontsize=16)
+            plt.ylabel('Frequency', fontsize=16)
             st.pyplot(plt)
-            plt.clf()  # 그래프 초기화
+            plt.clf()
 
-        # 두 번째 행에 2개의 열 생성
-        col4, col5 = st.columns(2)
-
-        # 각 열에 히스토그램 추가
-        with col4:
-            plt.figure(figsize=(15, 10))
-            sns.histplot(filtered_df['Conscientiousness'], kde=True, bins=10)
-            plt.title('Conscientiousness Distribution')
-            plt.xlabel('Conscientiousness')
-            plt.ylabel('Frequency')
+        # 두 번째 행: 2개의 히스토그램 (중앙 정렬)
+        col1, col2, col3, col4 = st.columns([1, 3, 3, 1])
+        
+        with col2:
+            plt.figure(figsize=(fig_width, fig_height))
+            sns.histplot(filtered_df[traits[3]], kde=True, bins=10)
+            plt.title(f'{traits[3]} Distribution', fontsize=20)
+            plt.xlabel(traits[3], fontsize=16)
+            plt.ylabel('Frequency', fontsize=16)
             st.pyplot(plt)
-            plt.clf()  # 그래프 초기화
+            plt.clf()
 
-        with col5:
-            plt.figure(figsize=(15, 10))
-            sns.histplot(filtered_df['Openness'], kde=True, bins=10)
-            plt.title('Openness Distribution')
-            plt.xlabel('Openness')
-            plt.ylabel('Frequency')
+        with col3:
+            plt.figure(figsize=(fig_width, fig_height))
+            sns.histplot(filtered_df[traits[4]], kde=True, bins=10)
+            plt.title(f'{traits[4]} Distribution', fontsize=20)
+            plt.xlabel(traits[4], fontsize=16)
+            plt.ylabel('Frequency', fontsize=16)
             st.pyplot(plt)
-            plt.clf()  # 그래프 초기화
+            plt.clf()
+
+        st.write("<br>", unsafe_allow_html=True)  # 간격 추가
     divider.space(80)
 
-    ct.subheaderNoLink("Dominant Personality Traits per Job")
+    ct.subheader("Dominant Personality Traits per Job")
     # 직군별 평균 점수를 계산하여 주요 성격 특성 구하기
     traits = ['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']
 
@@ -288,7 +301,7 @@ def show_content():
     plt.clf()  # 그래프 초기화
     divider.space(60)
 
-    ct.subheaderNoLink("Who is Close to Whom?")
+    ct.subheader("Who is Close to Whom?")
     # Define a function to get nearest neighbors
     def get_nearest_neighbors_with_distances(df, person_idx, n_neighbors=4):
         X = df[['Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness']]
@@ -308,18 +321,20 @@ def show_content():
     value1 = value1.iloc[:, [value1.columns.get_loc(c) for c in ['Name', 'Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness', 'Distance']]]
     value2 = value2.iloc[:, [value2.columns.get_loc(c) for c in ['Name', 'Neuroticism', 'Extraversion', 'Agreeableness', 'Conscientiousness', 'Openness', 'Distance']]]
 
-    # Combine the two dataframes
-    combined_df = pd.concat([value1, value2], ignore_index=True)
     ct.caption("Knn (k=4)")
-    st.dataframe(combined_df)
+    st.dataframe(value1)
+    divider.space(20)
+
+    ct.caption("Knn (k=4)")
+    st.dataframe(value2)
     divider.space(60)
 
-    ct.boldNoLink("Network Graph")
+    ct.bold("Network Graph")
     ct.caption("(* the edge weights in the graph: Euclidean distance)")
     agraph.show(df)
     divider.space(60)
     
-    ct.boldNoLink("Chord Diagram")
+    ct.bold("Chord Diagram")
     chordDiagram.show(df)
     divider.space(60)
     

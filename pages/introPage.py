@@ -3,6 +3,15 @@ from component import divider, scrollFadeIn
 from component.font import customText
 
 def show_intro_content():
+    st.markdown("""
+        <style>
+        .reportview-container .main .block-container {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     customText.titleNoLink("Personality Traits", None, "0px")
     customText.titleNoLink("Predicted from One’s Face", None, "0px")
     divider.space(40)
@@ -13,14 +22,14 @@ def show_intro_content():
     divider.rainbow_divider()
 
     customText.header("Introduction")
-    customText.subheaderNoLink("Do Facial Expressions Matter with One’s Personality?")
+    customText.subheader("Do Facial Expressions Matter with One’s Personality?")
     divider.space(40)
 
-    customText.boldNoLink("Abraham Lincoln")
+    customText.bold("Abraham Lincoln")
     customText.regularNoLink("나이 40이면 자신의 얼굴에 책임을 져야 한다.")
     divider.space(40)
 
-    customText.boldNoLink("첫 인상")
+    customText.bold("첫 인상")
     customText.regularNoLink("처음 만나는 사람의 속성에 대해서 그 사람에 대한 cue를 기반으로 판단을 내리는 것")
     customText.regularNoLink("첫 인상 결정요인 1위 '얼굴 표정' (YTN, 2012; 잡코리아 조사, 2022)")
     customText.regularNoLink("첫 인상 결정 뒤 잘 바뀌지 않는다 (헬스조선, 2024)")

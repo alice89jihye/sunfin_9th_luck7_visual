@@ -5,7 +5,16 @@ from component.font import customText as ct
 from PIL import Image
 
 def show_content():
-    ct.subheaderNoLink("Data: ChaLearn First Impression V2 (CVPR’17)")
+    st.markdown("""
+        <style>
+        .reportview-container .main .block-container {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    ct.subheader("Data: ChaLearn First Impression V2 (CVPR’17)")
     st.image("./data/img/chaLearn.png", use_column_width=True)
     ct.link2("https://chalearnlap.cvc.uab.cat/dataset/24/description/","https://chalearnlap.cvc.uab.cat/dataset/24/description/")
     divider.space(60)
@@ -14,7 +23,7 @@ def show_content():
     ct.link2("https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8999746","https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8999746")
     divider.space(60)
 
-    ct.subheaderNoLink("Summary of Procedures")
+    ct.subheader("Summary of Procedures")
     st.markdown(
         """
         1. Train the original model
@@ -31,8 +40,8 @@ def show_content():
     
     divider.space(60)
 
-    ct.subheaderNoLink("1. Training the original model")
-    ct.boldNoLink("3 video samples from train, validation and test sets")
+    ct.subheader("1. Training the original model")
+    ct.bold("3 video samples from train, validation and test sets")
     divider.space(10)
     st.image("./data/img/videoSamplesTest1.png", use_column_width=True)
     divider.space(20)
@@ -52,7 +61,7 @@ def show_content():
         st.image(image3, use_column_width=True)
     divider.space(80)
 
-    ct.boldNoLink("Creating a Model")
+    ct.bold("Creating a Model")
     ct.regularNoLink("Audio Subnetwork + Visual Subnetwork")
     ct.regularNoLink("☞ Combined Network")
     st.image("./data/img/model.png", use_column_width=True)
@@ -97,14 +106,14 @@ def show_content():
     divider.space(60)
 
     ct.subheader("3. Prediction")
-    ct.boldNoLink("Preprocessing")
+    ct.bold("Preprocessing")
     ct.regularNoLink("Resize the images (target size = 128 * 128)")
     """
     Augmentation
     (Original Image, Slight Rotation, Horizontal Flip, Slight Shift, Slight brightness adjustment, Gaussian blur)
     """
-    ct.boldNoLink("Load Images")
-    ct.boldNoLink("Prediction and Make a dataset")
+    ct.bold("Load Images")
+    ct.bold("Prediction and Make a dataset")
 
     data = {
     'Name': ['최지혜', '박동근3', '박동근2', '박동근1', '신주환', '박홍석', '유지훈'],

@@ -198,29 +198,6 @@ def header(text, color=None, margin_bottom="12px", font_size="28px"):
         unsafe_allow_html=True
     )
 
-def headerNoLink(text, color=None, margin_bottom="12px", font_size="28px"):
-    color = color or text_color
-    st.markdown(
-        f"""
-        <style>
-        .custom-header-no-link {{
-            font-family: {font};
-            color: {color};
-            font-weight: 600;
-            font-size: {font_size};
-            margin-bottom: {margin_bottom};
-            text-decoration: none;
-        }}
-        .custom-header-no-link:hover {{
-            text-decoration: none;
-            cursor: default;
-        }}
-        </style>
-        <p class="custom-header-no-link">{text}</p>
-        """, 
-        unsafe_allow_html=True
-    )
-
 def subheader(text, color=None, margin_bottom="10px", font_size="22px"):
     color = color or text_color
     st.markdown(
@@ -239,29 +216,6 @@ def subheader(text, color=None, margin_bottom="10px", font_size="22px"):
         unsafe_allow_html=True
     )
 
-def subheaderNoLink(text, color=None, margin_bottom="10px", font_size="22px"):
-    color = color or text_color
-    st.markdown(
-        f"""
-        <style>
-        .custom-subheader-no-link {{
-            font-family: {font};
-            color: {color};
-            font-weight: 500;
-            font-size: {font_size};
-            margin-bottom: {margin_bottom};
-            text-decoration: none;
-        }}
-        .custom-subheader-no-link:hover {{
-            text-decoration: none;
-            cursor: default;
-        }}
-        </style>
-        <p class="custom-subheader-no-link">{text}</p>
-        """, 
-        unsafe_allow_html=True
-    )
-
 def bold(text, color=None, margin_bottom="8px", font_size="16px"):
     color = color or text_color
     st.markdown(
@@ -276,29 +230,6 @@ def bold(text, color=None, margin_bottom="8px", font_size="16px"):
         }}
         </style>
         <p class="custom-bold">{text}</p>
-        """, 
-        unsafe_allow_html=True
-    )
-
-def boldNoLink(text, color=None, margin_bottom="8px", font_size="16px"):
-    color = color or text_color
-    st.markdown(
-        f"""
-        <style>
-        .custom-bold-no-link {{
-            font-family: {font};
-            color: {color};
-            font-weight: 700;
-            font-size: {font_size};
-            margin-bottom: {margin_bottom};
-            text-decoration: none;
-        }}
-        .custom-bold-no-link:hover {{
-            text-decoration: none;
-            cursor: default;
-        }}
-        </style>
-        <p class="custom-bold-no-link">{text}</p>
         """, 
         unsafe_allow_html=True
     )

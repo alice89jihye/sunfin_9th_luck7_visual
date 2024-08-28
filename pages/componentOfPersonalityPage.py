@@ -5,10 +5,19 @@ from component.font import customText as ct
 from PIL import Image
 
 def show_content():
-    ct.subheaderNoLink("Big Five Personalit")
+    st.markdown("""
+        <style>
+        .reportview-container .main .block-container {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    ct.subheader("Big Five Personalit")
     divider.space(40)
 
-    ct.boldNoLink("What is PERSONALITY?")
+    ct.bold("What is PERSONALITY?")
     ct.regularNoLink("Allport, G. W. (1937). Personality: a psychological interpretation. Holt.")
     ct.link("https://archive.org/details/in.ernet.dli.2015.155561/page/n45/mode/2up", "https://archive.org/details/in.ernet.dli.2015.155561/page/n45/mode/2up", "#0000FF", "8px", "16px", "40px")
     divider.space(40)
@@ -19,7 +28,7 @@ def show_content():
     ct.italicNoLink("per se una (self-containing; the Latin).®", None,"8px", "16px", "40px")
     divider.space(60)
 
-    ct.boldNoLink("MBTI vs. FFM (Five-Factor-Model)")
+    ct.bold("MBTI vs. FFM (Five-Factor-Model)")
     st.markdown("""
         <style>
         .bottom-aligned-image-container {
@@ -62,11 +71,11 @@ def show_content():
         st.markdown('</div>', unsafe_allow_html=True)
 
     
-    ct.boldNoLink("MBTI vs. FFM (Five-Factor-Model)")
+    ct.bold("MBTI vs. FFM (Five-Factor-Model)")
     st.image("./data/img/mbtiVsFfm.png", use_column_width=True)
     divider.space(60)
 
-    ct.boldNoLink("FFM (Five-Factor-Model)")
+    ct.bold("FFM (Five-Factor-Model)")
     divider.space(20)
     ct.regularNoLink("Lexical hypothesis")
     ct.regularNoLink("  1. Those personality characteristics that are important to a group of people will eventually become a part of that group's language.")
@@ -75,7 +84,7 @@ def show_content():
     ct.regularNoLink("Clustering words / Factor Analysis")
     divider.space(60)
 
-    ct.boldNoLink("MBTI (Myers-Briggs personality typing system)")
+    ct.bold("MBTI (Myers-Briggs personality typing system)")
     st.markdown("""
         <style>
             .mbti-question {
@@ -140,7 +149,7 @@ def show_content():
     ct.link2("http://www.lrjj.cn/encrm1.0/public/upload/MBTI-personality-test.pdf", "http://www.lrjj.cn/encrm1.0/public/upload/MBTI-personality-test.pdf")
     divider.space(80)
 
-    ct.boldNoLink("FFM (Five-Factor-Model)")
+    ct.bold("FFM (Five-Factor-Model)")
     image1 = Image.open("./data/img/ffm1.png")
     image2 = Image.open("./data/img/ffm2.png")
     # 두 개의 컬럼 생성
@@ -162,32 +171,32 @@ def show_content():
     ct.link2("https://test2.thepersonalitylab.org/version-test/v2_mobile_big", "https://test2.thepersonalitylab.org/version-test/v2_mobile_big")
     divider.space(60)
 
-    ct.boldNoLink("Personality traits ")
+    ct.bold("Personality traits ")
     ct.regularNoLink("Patterns of thought, feeling, and behaviour that are relatively enduring across an individual’s life span.")
     divider.space(40)
-    ct.boldNoLink("Openness to Experience")
+    ct.bold("Openness to Experience")
     ct.regularNoLink("This trait reflects how open-minded, imaginative, and willing to try new things a person is.")
     ct.regularNoLink("Individuals high in openness are curious, creative, and enjoy exploring new ideas and experiences.")
     ct.regularNoLink("Those low in openness tend to be more traditional, prefer routine, and are less comfortable with change.")
     divider.space(40)
 
-    ct.boldNoLink("Conscientiousness")
+    ct.bold("Conscientiousness")
     ct.regularNoLink("This trait measures a person’s degree of organization, dependability, and discipline.")
     ct.regularNoLink("High conscientiousness is associated with being thorough, careful, and efficient, often linked to strong work ethic and reliability.")
     ct.regularNoLink("Low conscientiousness may manifest as being more spontaneous, less organized, and sometimes more easy-going.")
     divider.space(40)
-    ct.boldNoLink("Extraversion")
+    ct.bold("Extraversion")
     ct.regularNoLink("This trait describes the extent to which a person is sociable, outgoing, and enjoys interacting with others. ")
     ct.regularNoLink("High extraversion is linked to being energetic, talkative, and assertive.")
     ct.regularNoLink("Those low in extraversion (introverts) tend to be more reserved, quiet, and enjoy solitary activities or smaller, more intimate social settings.")
     divider.space(40)
 
-    ct.boldNoLink("Agreeableness")
+    ct.bold("Agreeableness")
     ct.regularNoLink("This trait reflects a person’s tendency to be compassionate, cooperative, and willing to help others.")
     ct.regularNoLink("People high in agreeableness are often kind, empathetic, and good-natured,")
     ct.regularNoLink("whereas those low in agreeableness may be more competitive, skeptical, or even confrontational.")
     divider.space(40)
-    ct.boldNoLink("Neuroticism")
+    ct.bold("Neuroticism")
     ct.regularNoLink("This trait indicates how prone a person is to experiencing negative emotions like anxiety, anger, or depression.")
     ct.regularNoLink("High neuroticism is associated with emotional instability and vulnerability to stress.")
     ct.regularNoLink("Conversely, low neuroticism is linked to emotional resilience, calmness, and stability")

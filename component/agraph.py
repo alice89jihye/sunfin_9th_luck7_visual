@@ -114,7 +114,7 @@ def show(df: pd.DataFrame):
         
     #     with large_col2:
     #         # 범례 표시
-    #         st.markdown("<p style='text-align: center;'>Job Categories</p>", unsafe_allow_html=True)
+    #         st.markdown("<p style='text-align: center; font-size: 12px;'>Job Categories</p>", unsafe_allow_html=True)
     #         st.markdown(legend_html, unsafe_allow_html=True)
 
 
