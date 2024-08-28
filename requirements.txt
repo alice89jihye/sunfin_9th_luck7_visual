@@ -9,3 +9,4 @@ SPARQLWrapper
 networkx
 seaborn
 matplotlib
+openpyxl
