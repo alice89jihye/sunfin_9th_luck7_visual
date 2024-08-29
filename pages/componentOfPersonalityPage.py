@@ -3,8 +3,31 @@ import pandas as pd
 from component import divider
 from component.font import customText as ct
 from PIL import Image
+import base64
+from io import BytesIO
 
 def show_content():
+    image1 = Image.open("./data/img/bg2.png")
+
+    # 이미지를 base64로 인코딩
+    buffered = BytesIO()
+    image1.save(buffered, format="PNG")
+    img_str = base64.b64encode(buffered.getvalue()).decode()
+
+    # CSS 스타일 정의
+    css = f"""
+    <style>
+    .stApp {{
+        background-image: url(data:image/png;base64,{img_str});
+        background-size: 50% auto;
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(css, unsafe_allow_html=True)
+
     st.markdown("""
         <style>
         .reportview-container .main .block-container {
