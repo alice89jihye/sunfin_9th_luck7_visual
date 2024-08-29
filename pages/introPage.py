@@ -35,8 +35,8 @@ def show_intro_content():
         </style>
     """, unsafe_allow_html=True)
 
-    ct.title("Personality Traits", None, "0px")
-    ct.title("Predicted from One’s Face", None, "0px")
+    ct.title("Predicting Personality Traits", None, "0px")
+    ct.title("from Facial Images ", None, "0px")
     divider.space(40)
 
     # ct.caption("서울대학교 빅데이터 핀테크 AI 고급 전문가 과정 9기, 시각화웹개발 Team 7")

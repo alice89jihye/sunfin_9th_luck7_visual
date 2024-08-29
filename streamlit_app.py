@@ -3,7 +3,7 @@ from st_pages import add_page_title, get_nav_from_toml
 
 # 페이지 설정
 st.set_page_config(
-    page_title='Personality Traits Predicted from One’s Face',
+    page_title='Predicting Personality Traits from Facial Images',
     page_icon=':seven:',
     layout="wide",
     initial_sidebar_state="expanded"
