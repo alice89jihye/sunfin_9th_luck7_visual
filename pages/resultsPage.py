@@ -182,6 +182,7 @@ def show_content():
         # Trait에 해당하는 행을 필터링
         trait_data = dfa[dfa['Trait'] == trait].iloc[0, 1:]  # Trait에 해당하는 데이터
         ax.bar(dfa.columns[1:], trait_data, color=light_sky_blue)
+        ax.plot(dfa.columns[1:], dfa[dfa['Trait'] == trait].values[0][1:], color='blue', marker='o')
         ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
         ax.set_title(trait)
 
@@ -216,6 +217,7 @@ def show_content():
         # Trait에 해당하는 데이터 필터링
         trait_data = dfb[dfb['Trait'] == trait].iloc[0, 1:]
         ax.bar(dfb.columns[1:], trait_data, color=light_sky_blue)
+        ax.plot(dfb.columns[1:], dfb[dfb['Trait'] == trait].values[0][1:], color='blue', marker='o')
         ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
         ax.set_title(trait)
 
@@ -250,6 +252,7 @@ def show_content():
         # Trait에 해당하는 데이터 필터링
         trait_data = dfc[dfc['Trait'] == trait].iloc[0, 1:]
         ax.bar(dfc.columns[1:], trait_data, color=light_sky_blue)
+        ax.plot(dfc.columns[1:], dfc[dfc['Trait'] == trait].values[0][1:], color='blue', marker='o')
         ax.set_ylim(0, trait_data.max() * 1.1)  # y축 범위 설정
         ax.set_title(trait)
 
