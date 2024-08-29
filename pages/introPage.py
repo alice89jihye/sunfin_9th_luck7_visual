@@ -18,7 +18,7 @@ def show_intro_content():
     <style>
     .stApp {{
         background-image: url(data:image/png;base64,{img_str});
-        background-size: 50% auto;
+        background-size: 319px 400px;
         background-position: bottom right;
         background-repeat: no-repeat;
         background-attachment: fixed;
